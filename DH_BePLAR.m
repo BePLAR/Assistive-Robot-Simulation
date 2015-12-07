@@ -52,8 +52,7 @@ for i=1:12
     %As we know that in T matrix first  values of column 4 represents the
     %position vector, we shall extract these values seperately.
     T1=T1*T;
-end
-T1=simplify(T1);
+    T1=simplify(T1);
        disp(T1)
      P= [1,1,1;
          0,0,0;
@@ -67,6 +66,7 @@ Q_Right=[diff(T1(1:3,4),joint_values_right1), diff(T1(1:3,4),joint_values_right2
 Q_Right=transpose(Q_Right); 
 J_Right=[Q_Right;P];
 disp(J_Right)
+end
 
 %% Left Arm DH Table 
 %Input joint variables for trunk and left arm
@@ -78,7 +78,7 @@ disp(J_Right)
 %joint_values_left6=Rotation angle about wrist to provide holding grip
 %The first 2 joints would always assume same value in left & right arm DH
 %Table
-%joint_values_left=[0 18 0 60 0 0];
+joint_values_left=[0 18 0 60 0 0];
 syms joint_values_left1 joint_values_left2 joint_values_left3 joint_values_left4 joint_values_left5 joint_values_left6
 DH_left=[28,0,0,pi/2;
     0,pi/2,0,-pi/2;
@@ -101,14 +101,11 @@ T2=[1,0,0,0;
     0,0,0,1;];
 for i=1:12
     j=1;
-    T=Trans(DH_left(i,j),DH_left(i,j+1),DH_left(i,j+2),DH_left(i,j+3));
+    T=Trans1(DH_left(i,j),DH_left(i,j+1),DH_left(i,j+2),DH_left(i,j+3));
     %As we know that in T matrix first  values of column 4 represents the
     %position vector, we shall extract these values seperately.
     T2=T2*T;
     T2=simplify(T2);
-    disp(T2) 
-end
-T2=simplify(T2);
     disp(T2)
     % P is the last 3 rows of the Jacobian Matrix
      P= [1,1,1;
@@ -123,4 +120,5 @@ T2=vpa(T2,4);
 Q_Left=[diff(T2(1:3,4),joint_values_left1), diff(T2(1:3,4),joint_values_left2), diff(T2(1:3,4),joint_values_left3), diff(T2(1:3,4),joint_values_left4),diff(T2(1:3,4),joint_values_left5), diff(T2(1:3,4),joint_values_left6)];
 Q_Left=transpose(Q_Left); 
 J_Left=[Q_Left;P];
-disp(J_Left)
+disp(J_Left) 
+end
