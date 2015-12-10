@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%-----------------BePLAR------------------%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%-----------------BePLAR---------bla bla---------%%%%%%%%%%%%%%%%%%%
 %This program displays the stick model of the BePLAR robot with all the 
 %joints highlighted.
 %Last Edit: 11/01/2015
